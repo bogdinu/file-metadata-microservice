@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+  <script src="https://code.jquery.com/jquery.min.js"></script>
+ 
+  <title>file-metadata</title>
+</head>
+
+<body>
+
+  <p>
+    File metadata microservice - a Freecodecamp Challeng
+  </p>
+  <form method="post" enctype="multipart/form-data">
+    
+    <input type="file" name="myfile">
+    <p>  
+      	<input type="submit" value="Upload" />
+    </p>
+  </form>
+  
+  <script type="text/javascript">
+		
+		$(document).ready(function() {
+
+			var files;
+			$('input[type=file]').on('change', function(event) {
+				files = event.target.files;
+			});
+		
+			$('form').on('submit', function(event){
+				event.stopPropagation();
+				event.preventDefault();
+
+				var fdata = new FormData();
+				fdata.append('myfile', files[0]);
+
+				$.ajax({
+					url: window.location.origin + '/app/analyse/',
+					type: 'POST',
+					data: fdata,
+					cache: false,
+					processData: false,
+					contentType: false,
+					error: function(jqXHR, textStatus, errorThrown) {
+						alert('ERRORS: ' + textStatus);
+					},
+					success: function(data) {
+						alert('FILE SIZE: ' + data.fileSize);
+					}
+				});
+			});
+		});
+	</script>
+  
+</body>
+</html>

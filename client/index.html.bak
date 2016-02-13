@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+  <script src="https://code.jquery.com/jquery.min.js"></script>
+ 
+  <title>file-metadata</title>
+</head>
+
+<body>
+
+  <p>
+    File metadata microservice - a Freecodecamp Challeng
+  </p>
+  <form action="upload" method="post" enctype="multipart/form-data">
+    
+    <input type="file" name="file">
+    <p>  
+      <button type="submit">Upload</button>
+    </p>
+  </form>
+  
+  
+</body>
+</html>
